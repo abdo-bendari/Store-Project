@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Shopping Cart</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div class="navbar">
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+      <a href="products.html">Products</a>
+      <a href="cart.html">Cart</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Cart Section -->
+      <section class="cart">
+        <h1>Your Shopping Cart</h1>
+        <div class="cart-items">
+          <div class="cart-item">
+            <img
+              src="file:///C:/Users/dell/OneDrive/Desktop/eg-galaxy-s24-s928-sm-s928bztcmea-thumb-539296180.webp"
+              alt="Product 1"
+            />
+            <div class="item-details">
+              <h3>Product 1</h3>
+              <p>S24 Ultra 256GB .</p>
+              <div class="item-quantity">
+                <label for="quantity1">Quantity:</label>
+                <input
+                  type="number"
+                  id="quantity1"
+                  name="quantity"
+                  min="1"
+                  value="1"
+                />
+              </div>
+              <p class="item-price">$700.00</p>
+              <button class="remove-item">Remove</button>
+            </div>
+          </div>
+
+          <div class="cart-item">
+            <img
+              src="file:///C:/Users/dell/OneDrive/Desktop/samsung-galaxy-s10-1.png"
+              alt="Product 2"
+            />
+            <div class="item-details">
+              <h3>Product 2</h3>
+              <p>Samsung Galaxy-s10.</p>
+              <div class="item-quantity">
+                <label for="quantity2">Quantity:</label>
+                <input
+                  type="number"
+                  id="quantity2"
+                  name="quantity"
+                  min="1"
+                  value="1"
+                />
+              </div>
+              <p class="item-price">$290.00</p>
+              <button class="remove-item">Remove</button>
+            </div>
+          </div>
+          <div class="cart-item">
+            <img
+              src="file:///C:/Users/dell/OneDrive/Desktop/61K4VcdSWWL._AC_SL1000_.jpg"
+              alt="Product 3"
+            />
+            <div class="item-details">
+              <h3>Product 3</h3>
+              <p>Samsung Galaxy Camera 2 16.3MP CMOS with 21x Optical.</p>
+              <div class="item-quantity">
+                <label for="quantity3">Quantity:</label>
+                <input
+                  type="number"
+                  id="quantity2"
+                  name="quantity"
+                  min="1"
+                  value="1"
+                />
+              </div>
+              <p class="item-price">$400.00</p>
+              <button class="remove-item">Remove</button>
+            </div>
+          </div>
+          <div class="cart-item">
+            <img
+              src="file:///C:/Users/dell/OneDrive/Desktop/IMG_3737-IDX.png"
+              alt="Product 4"
+            />
+            <div class="item-details">
+              <h3>Product 4</h3>
+              <p>Samsung Galaxy Tab S9 Ultra x910 12GB 256GB .</p>
+              <div class="item-quantity">
+                <label for="quantity2">Quantity:</label>
+                <input
+                  type="number"
+                  id="quantity2"
+                  name="quantity"
+                  min="1"
+                  value="1"
+                />
+              </div>
+              <p class="item-price">$220.00</p>
+              <button class="remove-item">Remove</button>
+            </div>
+          </div>
+          <div class="cart-item">
+            <img
+              src="file:///C:/Users/dell/OneDrive/Desktop/31oDc8zr8ML._SL500_.jpg"
+              alt="Product 5"
+            />
+            <div class="item-details">
+              <h3>Product 5</h3>
+              <p>Samsung Galaxy a52.</p>
+              <div class="item-quantity">
+                <label for="quantity2">Quantity:</label>
+                <input
+                  type="number"
+                  id="quantity2"
+                  name="quantity"
+                  min="1"
+                  value="1"
+                />
+              </div>
+              <p class="item-price">$500.00</p>
+              <button class="remove-item">Remove</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cart-summary">
+          <p>Total: <span id="total-price">$2110.00</span></p>
+          <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 Team Project. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // Example JavaScript for updating total price based on quantity changes
+      const quantityInputs = document.querySelectorAll(
+        'input[name="quantity"]'
+      );
+      const totalPriceElement = document.getElementById("total-price");
+
+      quantityInputs.forEach((input) => {
+        input.addEventListener("change", updateTotalPrice);
+      });
+
+      function updateTotalPrice() {
+        const prices = [10, 20]; // Product prices corresponding to the cart items
+        let total = 0;
+
+        quantityInputs.forEach((input, index) => {
+          total += prices[index] * input.value;
+        });
+
+        totalPriceElement.textContent = `$${total.toFixed(2)}`;
+      }
+
+      // Example JavaScript for removing an item from the cart
+      const removeButtons = document.querySelectorAll(".remove-item");
+      removeButtons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.target.closest(".cart-item").remove();
+          updateTotalPrice(); // Update the total after removal
+        });
+      });
+    </script>
+  </body>
+</html>
